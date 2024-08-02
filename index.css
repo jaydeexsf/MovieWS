@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(4, 3, 34);
+    color: white;
+    font-weight: 300;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    font-size: 30px;
+}
+
+#SM {
+    border: none;
+    background-color: rgb(0, 82, 206);
+    border-radius: 3px;
+    padding: 10px;
+    width: 30vw;
+}
+
+.upperHead {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(6, 33, 97);
+    padding: 10px;
+}
+
+.grid-container1 {
+    font-size: 10px;
+    display: grid;
+    justify-content: center;
+    width: 98%;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    font-family:'Times New Roman', Times, serif;
+    border: 1px solid rgba(184, 184, 184, 0.336);
+    padding: 5px;
+}
+
+.grid {
+    position: relative;
+
+}
+
+#displayBrowse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.grid img {
+    border-radius: 3px;
+    width: 100%;
+    position: relative;
+    /* width: 30vw;
+    max-width: 300px; */
+    margin-left: 0px;
+    object-fit: fill;
+}
+
+.grid h2 {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: rgb(7, 1, 171);
+    cursor: pointer;
+    border: 1px solid rgb(7, 1, 171);
+}
+
+button {
+    outline: none;
+    border: 1px solid rgb(179, 178, 178);
+    border-radius: 2px;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.lowerHead {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    gap: 40px;
+    position: relative;
+}
+
+.lowerHead::before {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    content: "";
+    width: 100%;
+    background-color: green;
+    height: 1px;
+}
+
+.lowerHead span:hover {
+    cursor: pointer;
+     color: rgb(153, 183, 200);
+}
+
+.spany {
+    position: relative;
+}
+
+.spany::before {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    background-color: red;
+    width: 100%;
+    height: 2px;
+}
+
+.grid {
+    position: relative;
+}
+
+.grid h2 {
+    background-color: rgba(98, 98, 98, 0.606);
+    position: absolute;
+    height: 30px;
+    width: 100%;
+}
+
+#catMovies {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.selected {
+    background-color: rgba(1, 1, 78, 0.847);
+    color: white;
+}
