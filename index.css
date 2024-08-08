@@ -48,7 +48,7 @@ nav {
 
 .grid {
     position: relative;
-
+    max-width: 300px;
 }
 
 #displayBrowse {
