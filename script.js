@@ -83,7 +83,7 @@ const moviList = document.querySelector('.movieList');
 let queryLetter = "D";
 
 // Sorting by category
-const Popular = Alldata.filter(data => data.popularity > 1000); 
+const Popular = Alldata.filter(data => data.popularity > 2000); 
 const AToZ = Alldata.filter(data => data.title.slice(0, 1) === queryLetter);
 
 console.log(Alldata[0].title.slice(0, 1));
