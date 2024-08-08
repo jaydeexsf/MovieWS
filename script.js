@@ -73,6 +73,20 @@ if (category === "Recent") { moviList.innerHTML = Alldata.map(data =>
        </div>`
       ).join('')
 
+  } else if ( category === "Popular") {
+   moviList.innerHTML = Popular.map(data => 
+      `<div class="p-2">
+      <div class="mm">
+          <div class="img">
+            <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
+            <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
+          </div>
+          <div class="ss">
+            <span>HDTV/DVD</span>
+          </div>
+      </div>
+    </div>`
+   ).join('')
   }
 
 }) 
