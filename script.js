@@ -18,27 +18,52 @@ let Alldata;
 
 fetch(APILINK).then(res => res.json())
 .then(function(data){ 
-   Alldata = data;
+   Alldata = data.results;
 
    console.log(Alldata);
-})
+
 
 
 const moviList = document.querySelector('.movieList');
 
-moviList.innerHTML = ` 
-      ${Alldata.forEach(data => {
-            
-      });}
-            <div class="p-2">
-              <div class="mm">
-                  <div class="img">
-                    <span><img src="" alt="a">${Alldata.title}<span class="season">( Season 1, episode 4 )</span></span>
-                  </div>
-                  <div class="ss">
-                    <span>HDTV/DVD</span>
-                  </div>
-              </div>
-            </div>
+moviList.innerHTML =  Alldata.map(data => 
+         `<div class="p-2">
+         <div class="mm">
+             <div class="img">
+               <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
+               <span>${data.title}<span class="season">( ${data.release_date} )</span></span>
+             </div>
+             <div class="ss">
+               <span>HDTV/DVD</span>
+             </div>
+         </div>
+       </div>`
+      ).join("");
+})
 
-`
+// let Alldata;
+
+// // Fetch movie data from the API
+// fetch(APILINK)
+//    .then(res => res.json())
+//    .then(data => { 
+//       Alldata = data.results;
+
+//       console.log(Alldata);
+
+//       // Render movie list after fetching data
+//       const moviList = document.querySelector('.movieList');
+//       moviList.innerHTML = Alldata.map(data => 
+//          `<div class="p-2">
+//             <div class="mm">
+//                 <div class="img">
+//                   <img src="${IMG_PATH}${data.poster_path}" alt="${data.title}">
+//                   <span>${data.title}<span class="season">( ${data.release_date} )</span></span>
+//                 </div>
+//                 <div class="ss">
+//                   <span>HDTV/DVD</span>
+//                 </div>
+//             </div>
+//           </div>`
+//       ).join(''); // Join the array of HTML strings into a single string
+//    });
