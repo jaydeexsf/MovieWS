@@ -13,15 +13,38 @@ function handleClick () {
 const APILINK = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=41ee980e4b5f05f6693fda00eb7c4fd4&page=1';
 const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=41ee980e4b5f05f6693fda00eb7c4fd4&query=";
+const radioButtons = document.querySelectorAll('#category input[type="radio"]');
+
 
 let Alldata;
+let category = "Recent"; // selceted category
 
 fetch(APILINK).then(res => res.json())
 .then(function(data){ 
    Alldata = data.results;
    console.log(Alldata);
 
+   //function for targeting the values inside the category buttons
+function settingCategory (){
 
+   radioButtons.forEach( radio => {
+      radio.addEventListener('click', (e)=> {
+         category = e.target.id;
+         const radioId = e.target.id;
+    
+         const label = document.querySelector(`label[for="${radioId}"]`);
+
+         category = label.textContent;
+
+      })
+   })
+
+}
+
+//caling this functionn so that automatically when user clikc buttns it gets executed
+settingCategory();
+
+// console.log(category)
 
 const moviList = document.querySelector('.movieList');
 
@@ -36,7 +59,7 @@ console.log(Popular);
 console.log(AToZ)
 console.log(Alldata[0].title.slice(0, 1));
 
-moviList.innerHTML = Alldata.map(data => 
+if (category === "Recent") { moviList.innerHTML = Alldata.map(data => 
          `<div class="p-2">
          <div class="mm">
              <div class="img">
@@ -48,36 +71,13 @@ moviList.innerHTML = Alldata.map(data =>
              </div>
          </div>
        </div>`
-      ).join('');
-})
+      ).join('')
+
+  }
+
+}) 
 
 
 
 
 
-// let Alldata;
-
-// // Fetch movie data from the API
-// fetch(APILINK)
-//    .then(res => res.json())
-//    .then(data => { 
-//       Alldata = data.results;
-
-//       console.log(Alldata);
-
-//       // Render movie list after fetching data
-//       const moviList = document.querySelector('.movieList');
-//       moviList.innerHTML = Alldata.map(data => 
-//          `<div class="p-2">
-//             <div class="mm">
-//                 <div class="img">
-//                   <img src="${IMG_PATH}${data.poster_path}" alt="${data.title}">
-//                   <span>${data.title}<span class="season">( ${data.release_date} )</span></span>
-//                 </div>
-//                 <div class="ss">
-//                   <span>HDTV/DVD</span>
-//                 </div>
-//             </div>
-//           </div>`
-//       ).join(''); // Join the array of HTML strings into a single string
-//    });
