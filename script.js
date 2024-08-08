@@ -24,6 +24,7 @@ fetch(APILINK).then(res => res.json())
    Alldata = data.results;
    console.log(Alldata);
 
+settingCategory();
    //function for targeting the values inside the category buttons
 function settingCategory (){
 
@@ -35,6 +36,36 @@ function settingCategory (){
          const label = document.querySelector(`label[for="${radioId}"]`);
 
          category = label.textContent;
+
+if (category === "Recent") { moviList.innerHTML = Alldata.map(data => 
+   `<div class="p-2">
+   <div class="mm">
+       <div class="img">
+         <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
+         <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
+       </div>
+       <div class="ss">
+         <span>HDTV/DVD</span>
+       </div>
+   </div>
+ </div>`
+).join('')
+
+} else if ( category === "Popular") {
+moviList.innerHTML = Popular.map(data => 
+`<div class="p-2">
+<div class="mm">
+    <div class="img">
+      <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
+      <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
+    </div>
+    <div class="ss">
+      <span>HDTV/DVD</span>
+    </div>
+</div>
+</div>`
+).join('')
+}
 
       })
    })
@@ -55,43 +86,20 @@ let queryLetter = "D";
 const Popular = Alldata.filter(data => data.popularity > 1000); 
 const AToZ = Alldata.filter(data => data.title.slice(0, 1) === queryLetter);
 
-console.log(Popular);
-console.log(AToZ)
 console.log(Alldata[0].title.slice(0, 1));
 
-if (category === "Recent") { moviList.innerHTML = Alldata.map(data => 
-         `<div class="p-2">
-         <div class="mm">
-             <div class="img">
-               <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
-               <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
-             </div>
-             <div class="ss">
-               <span>HDTV/DVD</span>
-             </div>
-         </div>
-       </div>`
-      ).join('')
+const main = document.querySelector('.grid-container1');
 
-  } else if ( category === "Popular") {
-   moviList.innerHTML = Popular.map(data => 
-      `<div class="p-2">
-      <div class="mm">
-          <div class="img">
-            <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
-            <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
-          </div>
-          <div class="ss">
-            <span>HDTV/DVD</span>
-          </div>
-      </div>
-    </div>`
-   ).join('')
-  }
+let maindata = Alldata.slice(17, 20);
+
+main.innerHTML = maindata.map(data =>
+`<div class="grid">
+   <img height="auto" src="${IMG_PATH}${data.poster_path}" alt="${data.title}">
+   <h2 class="mvTitle">${data.title}</h2>
+</div>
+`
+).join("")
+
+console.log(maindata);
 
 }) 
-
-
-
-
-

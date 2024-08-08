@@ -134,7 +134,7 @@ button {
 }
 
 .grid h2 {
-    background-color: rgba(98, 98, 98, 0.606);
+    background-color: rgba(98, 98, 98, 0.855);
     position: absolute;
     height: 30px;
     width: 100%;
@@ -222,4 +222,11 @@ button {
 .like {
     background-color: red;
     color: green;
+}
+
+.mvTitle {
+    font-size: 12px;
+    color: rgb(9, 3, 68);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800;
 }
