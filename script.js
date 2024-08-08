@@ -19,27 +19,41 @@ let Alldata;
 fetch(APILINK).then(res => res.json())
 .then(function(data){ 
    Alldata = data.results;
-
    console.log(Alldata);
 
 
 
 const moviList = document.querySelector('.movieList');
 
-moviList.innerHTML =  Alldata.map(data => 
+//i will upddate this later to make the user choose the letter
+let queryLetter = "D";
+
+// Sorting by category
+const Popular = Alldata.filter(data => data.popularity > 1000); 
+const AToZ = Alldata.filter(data => data.title.slice(0, 1) === queryLetter);
+
+console.log(Popular);
+console.log(AToZ)
+console.log(Alldata[0].title.slice(0, 1));
+
+moviList.innerHTML = Alldata.map(data => 
          `<div class="p-2">
          <div class="mm">
              <div class="img">
                <img width="25px" height="auto" src="${IMG_PATH}${data.backdrop_path}" alt="${data.title}">
-               <span>${data.title}<span class="season">( ${data.release_date} )</span></span>
+               <span class="aaa">${data.title}<span class="season">( ${data.release_date} )</span></span>
              </div>
              <div class="ss">
                <span>HDTV/DVD</span>
              </div>
          </div>
        </div>`
-      ).join("");
+      ).join('');
 })
+
+
+
+
 
 // let Alldata;
 
